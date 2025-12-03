@@ -5,7 +5,8 @@ import { TypewriterText } from "@/components/typewriter-text"
 import { Sparkles } from "@/components/sparkles"
 import { quinceMainData } from "../sections/data/main-data"
 
-const { videoFondos } = quinceMainData;
+const { videoFondos, event } = quinceMainData;
+const { party } = event;
 
 const parentsVideo = videoFondos.parents;
 
@@ -29,12 +30,11 @@ export function ParentsScene({ onComplete, isActive = true }: ParentsSceneProps)
 
   
   const firstMessage = "Recepción"
-  const secondMessage = "Salón de Eventos Chely"
-  const thirdMessage = "14:00 hrs."
-  const fourthMessage = "Priv. Esther s/n 62554 Ampliación las Fuentes, Morelos"
-  const fifthMessage = "Baile y Fiesta"
-  const ubiLink = "https://maps.app.goo.gl/bkZcrDJRibk4Ztrq9"
-
+  const secondMessage = party.venue
+  const thirdMessage = party.time
+  const fourthMessage = party.address
+  const fifthMessage = party.type
+  const ubiLink = party.ubiLink
   // Video loading handlers
   const handleVideoLoaded = () => {
     console.log('Video loaded successfully in parents-scene')

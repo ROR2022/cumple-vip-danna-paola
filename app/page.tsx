@@ -89,8 +89,7 @@ export default function QuinceaneraInvitation() {
       {currentScene === 4 && <ParentsScene onComplete={handleSceneComplete} isActive={!isPaused} />}
       {currentScene === 5 && <DateScene onComplete={handleSceneComplete} isActive={!isPaused} />}
       {currentScene === 6 && <ReceptionScene onComplete={handleSceneComplete} isActive={!isPaused} />}
-      {currentScene === 7 && <GalleryScene onComplete={handleSceneComplete} isActive={!isPaused} />}
-      {currentScene === 8 && <ScheduleScene onComplete={handleSceneComplete} isActive={!isPaused} />}
+      {currentScene === 7 && <ScheduleScene onComplete={handleSceneComplete} isActive={!isPaused} />}
       
 
        {showAudioPlayer && <AudioPlayer src="/audio/musica.mp3" autoPlay startTime={17} />} 

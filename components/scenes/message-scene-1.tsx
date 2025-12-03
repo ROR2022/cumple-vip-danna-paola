@@ -3,11 +3,21 @@ import { Sparkles } from "@/components/sparkles"
 import { TypewriterText } from "@/components/typewriter-text"
 import { useState, useEffect } from "react"
 import { quinceMainData } from "../sections/data/main-data"
+import BackgroundCarrousel from "../sections/BackgroundCarrousel"
 
 const { videoFondos } = quinceMainData;
 
 const message1Video = videoFondos.message1;
 
+const imagesCarrousel=[
+  "/images/dp01.jpg",
+  "/images/dp02.jpg",
+  "/images/dp03.jpg",
+  "/images/dp04.jpg",
+  "/images/dp05.jpg",
+  "/images/dp06.jpg",
+  "/images/dp07.jpg"
+]
 
 
 interface MessageScene1Props {
@@ -22,12 +32,9 @@ export function MessageScene1({ onComplete, isActive }: MessageScene1Props) {
   const [videoError, setVideoError] = useState(false)
 
   const message = `
-  Con el corazón lleno de gratitud, 
-  agradezco a la vida por cada sonrisa, 
-  cada reto y cada momento que me ha hecho crecer.
-  Hoy celebro mis 19 años con alegría, 
-  ilusión y esperanza, agradeciendo a Dios por acompañarme siempre y 
-  por todo lo hermoso que está por venir. 🌷
+  Con el corazón agradecido, le doy gracias a la vida por ti.
+En tus 19 años le pido a Dios que te llene de alegría, luz y bendiciones,
+y que todo lo hermoso que viene encuentre siempre tu camino. 🌷
   `
 
   // Handle video loading
@@ -94,50 +101,14 @@ export function MessageScene1({ onComplete, isActive }: MessageScene1Props) {
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <Sparkles count={20} />
 
-      {/* Video Background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        onLoadedData={handleVideoLoaded}
-        onCanPlay={handleVideoLoaded}
-        onError={handleVideoError}
-        style={{
-          filter: 'brightness(1.05) contrast(1.05)',
-          opacity: videoLoaded && !videoError ? 1 : 0,
-          transition: 'opacity 0.5s ease-in-out'
-        }}
-      >
-        <source src={message1Video.src} type="video/mp4" />
-        {/* Fallback to image if video fails to load */}
-        <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fotoVideo2-Wm2VQWrwt1WtwvZvtaWlAId6zCG8iW.png"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: videoError ? 1 : 0,
-            transition: 'opacity 0.5s ease-in-out'
-          }}
-        />
-      </video>
-
+      <BackgroundCarrousel images={imagesCarrousel} />
       {/* Minimal overlay only where text appears - removed general dark overlay */}
       {/* <div className="absolute inset-0 bg-black/10 z-10" /> */}
 
-      {/* Loading Indicator */}
-      {!videoLoaded && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/30">
-          <div className="text-center space-y-4">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-rose-400 border-t-transparent mx-auto"></div>
-            <p className="text-white text-lg font-semibold">Cargando experiencia...</p>
-          </div>
-        </div>
-      )}
+      
 
       {/* Message Text */}
-      {videoLoaded && hasStarted && (
+      { hasStarted && (
         <div className="relative z-20 max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="rounded-2xl p-8 md:p-12 lg:p-16">
             <TypewriterText

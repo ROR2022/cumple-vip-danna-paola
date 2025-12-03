@@ -6,9 +6,10 @@ import { Sparkles } from "@/components/sparkles"
 
 import { quinceMainData } from "../sections/data/main-data"
 
-const { videoFondos } = quinceMainData;
+const { videoFondos, event } = quinceMainData;
 
 const message3Video = videoFondos.message3;
+const { ceremony } = event;
 
 interface MessageScene3Props {
   onComplete?: () => void
@@ -27,12 +28,11 @@ export function MessageScene3({ onComplete, isActive = true }: MessageScene3Prop
   const [videoError, setVideoError] = useState(false)
 
   const firstMessage = "Ceremonia"
-  const secondMessage = "Capilla del Señor de la Misericordia"
-  const thirdMessage = "18:30 hrs."
-  const fourthMessage = "Viveros s/n, Parque ecológico Viverista, Acapulco de Juárez, Gro."
-  const fifthMessage = "Misa de Acción de Gracias"
-  const ubiLink = "https://maps.app.goo.gl/5TXtedoXtwqBUV7P8"
-
+  const secondMessage = ceremony.venue
+  const thirdMessage = ceremony.time
+  const fourthMessage = ceremony.address
+  const fifthMessage = ceremony.type
+  const ubiLink = ceremony.ubiLink
   // Handle video loading
   const handleVideoLoaded = () => {
     console.log('MessageScene3 - Video loaded successfully')
